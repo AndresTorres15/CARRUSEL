@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Para ti</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #9061ff;
+        --secondary-color: #4caf50;
+        --text-color: #2c3e50;
+        --background-blur: 10px;
+        --transition-speed: 0.3s;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Playfair Display", serif;
+        background-image: url("REGALO2.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: var(--text-color);
+        line-height: 1.6;
+        min-height: 100vh;
+        padding: 2rem;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .player {
+        background: rgba(255, 255, 255, 0.95);
+        font-family: "Pacifico", cursive;
+        border-radius: 20px;
+        padding: 2rem;
+        max-width: 600px;
+        margin: 2rem auto;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(var(--background-blur));
+        transform: translateY(0);
+        transition: transform var(--transition-speed) ease;
+      }
+
+      .player:hover {
+        transform: translateY(-5px);
+      }
+
+      .player h1 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      audio {
+        width: 100%;
+        margin: 1rem 0;
+        border-radius: 30px;
+      }
+
+      .train-container {
+        position: relative;
+        margin: 3rem auto;
+        max-width: 1000px;
+        overflow: hidden;
+        padding: 2rem 0;
+        /*perspective: 1000px;*/
+      }
+
+      .train {
+        display: flex;
+        /*width: calc(250px * 24);  Double the number of images */
+        animation: infiniteScroll 40s linear infinite;
+        /*gap: 1.5rem;
+            will-change: transform;*/
+      }
+
+      @keyframes infiniteScroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(calc(-230px * 12));
+        }
+      }
+      .train::after {
+        content: "";
+        display: block;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        right: -100%;
+      }
+
+      .station {
+        flex: 0 0 230px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        padding: 1rem;
+        height: 300px;
+        margin: 0 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(var(--background-blur));
+        /*transform: scale(1);*/
+        transition: all var(--transition-speed) ease;
+      }
+
+      .station:hover {
+        transform: scale(1.05) translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .station img {
+        width: 100%;
+        height: 230px;
+        border-radius: 10px;
+        object-fit: cover;
+        transition: transform var(--transition-speed) ease;
+        opacity: 0.8;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+      .station:hover img {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+
+      .station .caption {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        color: var(--text-color);
+      }
+
+      .button {
+        font-family: "Dancing Script", cursive;
+        background: var(--primary-color);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+        margin: 1rem;
+        transition: all var(--transition-speed) ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        background: #7b4dff;
+      }
+
+      .message {
+        font-family: "Dancing Script", cursive;
+        font-size: 2rem;
+        margin: 2rem 0;
+        min-height: 50px;
+        color: var(--text-color);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .redirect-button {
+        background: var(--secondary-color);
+        display: none;
+      }
+
+      .redirect-button:hover {
+        background: #45a049;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 1rem;
+        }
+
+        .player {
+          padding: 1.5rem;
+        }
+
+        .station {
+          flex: 0 0 180px;
+          height: 250px;
+        }
+
+        .station img {
+          height: 180px;
+        }
+
+        .button {
+          padding: 0.8rem 1.6rem;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="player">
+        <h1>2024 junto a tí</h1>
+        <audio id="audio" controls>
+          <source src="RARA.mp3" type="audio/mpeg" />
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+      </div>
+
+      <div class="frases">
+        <button id="clickButton" class="button" onclick="changeAppearance()">
+          Click Aquí
+        </button>
+      </div>
+
+      <div class="message" id="message"></div>
+      <button
+        class="button redirect-button"
+        id="redirectButton"
+        onclick="redirect()"
+      >
+        Click aquí para continuar...
+      </button>
+
+      <div class="train-container">
+        <div class="train" id="train">
+          <!-- Repeat for all images -->
+          <div class="station">
+            <a href="IMAGEN.html" target="_blank">
+              <img src="IMAGEN1.jpeg" alt="Primera Cita" />
+            </a>
+          </div>
+          <!-- Add the rest of your stations here -->
+          <div class="station">
+            <a href="IMAGEN.html" target="_blank">
+              <img src="IMAGEN2.jpeg" alt="Viaje Especial" />
+            </a>
+          </div>
+          <div class="station">
+            <a href="IMAGEN.html" target="_blank">
+              <img src="IMAGEN3.jpeg" alt="Navidad Juntos" />
+            </a>
+          </div>
+          <div class="station">
+            <a href="IMAGEN.html" target="_blank">
+              <img src="IMAGEN4.jpeg" alt="Promesas" />
+            </a>
+          </div>
+          <div class="station">
+            <a href="IMAGEN.html" target="_blank">
+              <img src="IMAGEN5.jpeg" alt="Primera Cita" />
+            </a>
+          </div>
+          <div class="station">
+            <a href="IMAGEN.html" target="_blank">
+              <img src="IMAGEN7.jpeg" alt="Viaje Especial" />
+            </a>
+          </div>
+          <div class="station">
+            <a href="IMAGEN.html" target="_blank">
+              <img src="IMAGEN8.jpeg" alt="Navidad Juntos" />
+            </a>
+          </div>
+          <div class="station">
+            <a href="IMAGEN.html" target="_blank">
+              <img src="IMAGEN9.jpeg" alt="Promesas" />
+            </a>
+          </div>
+          <div class="station">
+            <a href="IMAGEN.html" target="_blank">
+              <img src="IMAGEN10.jpeg" alt="Primera Cita" />
+            </a>
+          </div>
+          <div class="station">
+            <a href="viajeespecial.html" target="_blank">
+              <img src="IMAGEN11.jpeg" alt="Viaje Especial" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const train = document.querySelector(".train");
+      const message = document.getElementById("message");
+      const redirectButton = document.getElementById("redirectButton");
+      const clickButton = document.getElementById("clickButton");
+      const messages = [
+        "Cada momento contigo es especial...",
+        "Construyendo recuerdos únicos...",
+        "Mi amor hacia ti crece día a día...",
+        "Juntos hacemos magia...",
+        "Te quiero mucho Alexandra ❤️",
+      ];
+
+      let currentIndex = 0;
+      let typingTimer;
+
+      function typeWriter(text, index = 0) {
+        if (index < text.length) {
+          message.textContent += text.charAt(index);
+          typingTimer = setTimeout(() => typeWriter(text, index + 1), 50);
+        } else if (currentIndex === messages.length - 1) {
+          setTimeout(() => {
+            redirectButton.style.display = "inline-block";
+            clickButton.style.display = "none";
+          }, 1000);
+        }
+      }
+
+      function changeAppearance() {
+        if (currentIndex < messages.length) {
+          clearTimeout(typingTimer);
+          message.textContent = "";
+          typeWriter(messages[currentIndex]);
+          currentIndex++;
+        }
+      }
+
+      function redirect() {
+        const transition = document.createElement("div");
+        transition.style.position = "fixed";
+        transition.style.top = "0";
+        transition.style.left = "0";
+        transition.style.width = "100%";
+        transition.style.height = "100%";
+        transition.style.background = "white";
+        transition.style.opacity = "0";
+        transition.style.transition = "opacity 1s ease";
+        transition.style.zIndex = "1000";
+        document.body.appendChild(transition);
+
+        setTimeout(() => {
+          transition.style.opacity = "1";
+          setTimeout(() => {
+            window.location.href = "pagina-especial.html";
+          }, 1000);
+        }, 50);
+      }
+      // Clone and append items for infinite scroll
+      function setupInfiniteScroll() {
+        const items = train.children;
+        const itemCount = items.length;
+
+        // Clone the first set of items
+        for (let i = 0; i < itemCount; i++) {
+          const clone = items[i].cloneNode(true);
+          train.appendChild(clone);
+        }
+      }
+
+      // Reset animation when it ends
+      function resetAnimation() {
+        train.addEventListener("animationend", () => {
+          train.style.animation = "none";
+          train.offsetHeight; // Trigger reflow
+          train.style.animation = "infiniteScroll 40s linear infinite";
+        });
+      }
+
+      setupInfiniteScroll();
+      resetAnimation();
+
+      // Pause animation on hover
+      document
+        .querySelector(".train")
+        .addEventListener("mouseenter", function () {
+          this.style.animationPlayState = "paused";
+        });
+
+      document
+        .querySelector(".train")
+        .addEventListener("mouseleave", function () {
+          this.style.animationPlayState = "running";
+        });
+    </script>
+  </body>
+</html>

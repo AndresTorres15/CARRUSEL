@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Contenedor principal */
+      body {
+        font-family: "Dancing Script", cursive;
+        background-image: url("REGALO1.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed; /* Keeps background fixed while scrolling */
+        min-height: 100vh; /* Ensures full viewport height coverage */
+        color: black;
+        text-align: center;
+        padding: 20px;
+        margin: 0;
+      }
+
+      /* Imagen principal */
+      img {
+        max-width: 100%; /* La imagen ocupa el 100% del ancho en pantallas pequeñas */
+        height: auto; /* Asegura que la imagen mantenga la proporción */
+        margin-bottom: 20px; /* Espaciado inferior */
+      }
+
+      /* Estilo para el botón */
+      button {
+        font-size: 16px; /* Tamaño de la fuente */
+        padding: 10px 20px; /* Espaciado dentro del botón */
+        background-color: #4caf50; /* Color de fondo verde */
+        color: white; /* Color de texto blanco */
+        border: none; /* Elimina el borde por defecto */
+        border-radius: 5px; /* Bordes redondeados */
+        cursor: pointer; /* Muestra el cursor como puntero */
+        transition: background-color 0.3s ease; /* Transición suave al cambiar el color */
+      }
+
+      /* Estilo cuando el botón es hover (cuando se pasa el mouse por encima) */
+      button:hover {
+        background-color: #45a049; /* Color de fondo más oscuro al pasar el mouse */
+      }
+
+      /* Media Query para dispositivos móviles */
+      @media (max-width: 768px) {
+        button {
+          font-size: 14px; /* Reduce el tamaño del texto del botón en pantallas pequeñas */
+          padding: 8px 16px; /* Ajusta el espaciado en pantallas pequeñas */
+          background-attachment: scroll; /* Better performance on mobile */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Imagen -->
+    <img src="REGALO1.jpg" alt="Snoopy" />
+
+    <!-- Botón -->
+    <button onclick="closePage()">Esta Historia Continuará...</button>
+
+    <script>
+      function closePage() {
+        window.close();
+      }
+    </script>
+  </body>
+</html>
