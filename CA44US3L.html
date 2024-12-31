@@ -320,7 +320,8 @@
         if (index < text.length) {
           message.textContent += text.charAt(index);
           typingTimer = setTimeout(() => typeWriter(text, index + 1), 50);
-        } else if (currentIndex === messages.length - 1) {
+        } else if (currentIndex >= messages.length - 1) {
+          // Cambiado de === a >=
           setTimeout(() => {
             redirectButton.style.display = "inline-block";
             clickButton.style.display = "none";
