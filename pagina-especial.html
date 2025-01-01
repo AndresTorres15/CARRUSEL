@@ -1,65 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Snoopy</title>
     <style>
-      /* Contenedor principal */
       body {
-        font-family: "Dancing Script", cursive;
-        background-image: url("REGALO1.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed; /* Keeps background fixed while scrolling */
-        min-height: 100vh; /* Ensures full viewport height coverage */
-        color: black;
-        text-align: center;
-        padding: 20px;
         margin: 0;
+        padding: 0;
+        height: 100vh;
+        font-family: "Dancing Script", cursive;
       }
 
-      /* Imagen principal */
-      img {
-        max-width: 100%; /* La imagen ocupa el 100% del ancho en pantallas pequeñas */
-        height: auto; /* Asegura que la imagen mantenga la proporción */
-        margin-bottom: 20px; /* Espaciado inferior */
+      .container {
+        position: relative;
+        height: 100vh;
+        width: 100%;
       }
 
-      /* Estilo para el botón */
+      .background-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+
+      .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        text-align: center;
+        width: 80%;
+        color: black;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.7
+        ); /* Fondo semi-transparente para mejor legibilidad */
+        padding: 15px;
+        border-radius: 10px;
+      }
+
       button {
-        font-size: 16px; /* Tamaño de la fuente */
-        padding: 10px 20px; /* Espaciado dentro del botón */
-        background-color: #4caf50; /* Color de fondo verde */
-        color: white; /* Color de texto blanco */
-        border: none; /* Elimina el borde por defecto */
-        border-radius: 5px; /* Bordes redondeados */
-        cursor: pointer; /* Muestra el cursor como puntero */
-        transition: background-color 0.3s ease; /* Transición suave al cambiar el color */
+        font-size: 16px;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
       }
 
-      /* Estilo cuando el botón es hover (cuando se pasa el mouse por encima) */
       button:hover {
-        background-color: #45a049; /* Color de fondo más oscuro al pasar el mouse */
+        background-color: #45a049;
       }
 
-      /* Media Query para dispositivos móviles */
       @media (max-width: 768px) {
+        p {
+          font-size: 1rem;
+          padding: 10px;
+        }
+
         button {
-          font-size: 14px; /* Reduce el tamaño del texto del botón en pantallas pequeñas */
-          padding: 8px 16px; /* Ajusta el espaciado en pantallas pequeñas */
-          background-attachment: scroll; /* Better performance on mobile */
+          font-size: 14px;
+          padding: 8px 16px;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Imagen -->
-    <img src="REGALO1.jpg" alt="Snoopy" />
-
-    <!-- Botón -->
-    <button onclick="closePage()">Esta Historia Continuará...</button>
+    <div class="container">
+      <img src="REGALO1.jpg" alt="Snoopy" class="background-image" />
+      <div class="content">
+        <p>
+          Bueno empiezo, el 2024 quedó atrás, pero no puedo dejar de pensar en todo lo que significaste para mí durante este año, no puedo evitar
+          pensar en todo lo que hemos compartido, en cómo has hecho que ese año
+          sea especial y único. Perdón si en ocasiones he actuado de una manera
+          rara o indiferente, la verdad es que nunca antes había sentido algo
+          tan fuerte por alguien. Dejamos atrás el 2024, solo quiero que sepas
+          que espero mucho todo lo que el próximo año nos traerá, porque quiero
+          que tú sigas siendo parte de mis días. ATTENTAMENTE: Andrés
+        </p>
+        <button onclick="closePage()">Esta Historia Continuará...</button>
+      </div>
+    </div>
 
     <script>
       function closePage() {
